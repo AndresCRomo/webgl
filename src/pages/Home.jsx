@@ -1,7 +1,7 @@
 import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import Loader from "../components/Loader";
-
+import HomeInfo from "../components/HomeInfo";
 import Island from "../models/Island";
 import Sky from "../models/Sky";
 import Plane from "../models/Plane";
@@ -46,6 +46,9 @@ function Home() {
 
   return (
     <section className="w-full h-screen relative">
+      <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+        {currentStage && <HomeInfo currentStage={currentStage}/>}
+      </div>
       <Canvas
         className={`w-full h-screen ${
           isRotating ? "cursor-grabbing" : "cursor-grab"
@@ -60,7 +63,7 @@ function Home() {
             groundColor="#000000"
             intensity={1}
           />
-          <Sky isRotating={isRotating}/>
+          <Sky isRotating={isRotating} />
           <Bird />
           <Plane
             isRotating={isRotating}
